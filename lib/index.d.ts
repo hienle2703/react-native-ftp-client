@@ -19,7 +19,8 @@ export interface FtpSetupConfiguration {
 }
 declare module FtpClient {
     function setup(config: FtpSetupConfiguration): void;
-    function list(remote_path: string): Promise<Array<ListItem>>;
+    function processPath(host_path_root: string, host: string, endPath: string): void;
+    function list(hostPath: string, remote_path: string): Promise<Array<ListItem>>;
     function uploadFile(local_path: string, remote_path: string): Promise<void>;
     function cancelUploadFile(token: string): Promise<void>;
     function addProgressListener(listener: (data: {
